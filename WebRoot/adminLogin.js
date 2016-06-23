@@ -1,6 +1,6 @@
 function loginCheck() {
 	if ($('#username').val() == "" || $('#password').val() == "") {
-		alert("Can not null");
+		alert("Can not null!!");
 	} else {
 		$.ajax({
 			data : { // The data sent to the database
@@ -13,7 +13,7 @@ function loginCheck() {
 
 			},
 			type : "post",
-			url : login_validate
+			url : "login_validate"
 		});
 	}
 
