@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.Test;
 
 import com.hank.pojo.User;
+import com.hank.pojo.UserAdmin;
 
 public class UserDaoImplTest {
 
@@ -23,8 +24,12 @@ public class UserDaoImplTest {
 			SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder()
 					.build(inputStream);
 
+			User userToFind = new UserAdmin();
+			userToFind.setUsername("admin1");
+			userToFind.setPassword("123");
+			
 			User user = new UserAdminDaoImpl(sqlSessionFactory)
-					.findUserByNameWithExact("admin1");
+					.findUserWithNameAndPass(userToFind);
 
 			System.out.println(user.getUsername() + "!!!!!"
 					+ user.getPassword());

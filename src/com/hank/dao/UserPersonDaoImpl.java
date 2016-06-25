@@ -15,10 +15,10 @@ public class UserPersonDaoImpl implements UserAdminDao {
 	}
 
 	@Override
-	public User findUserByNameWithExact(String name) throws Exception {
+	public User findUserWithNameAndPass(User userToFind) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		User user = sqlSession.selectOne(
-				"account_admin_user_person.findUserByNameWithExact", name);
+				"account_admin_user_person.findUserWithNameAndPass", userToFind);
 		// 释放资源
 		sqlSession.close();
 

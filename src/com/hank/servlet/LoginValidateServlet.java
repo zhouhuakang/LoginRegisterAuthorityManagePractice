@@ -2,7 +2,7 @@ package com.hank.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Reader;
+import java.io.Writer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,11 +13,16 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.hank.dao.UserAdminDaoImpl;
 import com.hank.dao.UserEnterpriseDaoImpl;
 import com.hank.dao.UserPersonDaoImpl;
 import com.hank.pojo.User;
+import com.hank.pojo.UserAdmin;
+import com.hank.pojo.UserEnterprise;
+import com.hank.pojo.UserPerson;
 
 @WebServlet(name = "LoginValidateServlet", urlPatterns = { "/login_validate" })
 public class LoginValidateServlet extends HttpServlet {
@@ -29,23 +34,33 @@ public class LoginValidateServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		req.setCharacterEncoding("utf-8");
+		resp.setContentType("application/json");
 
 		String userName = req.getParameter("username");
-		String passWord = req.getParameter("password");
+		String password = req.getParameter("password");
 		int userType = Integer.valueOf(req.getParameter("userType"));
 
-		System.out.println(userName + " ---  " + passWord);
-		System.out.println(checkLogin(userType, userName, passWord));
-		
+		Writer writer = resp.getWriter();
+		User user = null;
+		user = getUserFromDB(userType, userName, password);
 
-		if (checkLogin(userType, userName, passWord)) {
-			System.out.println("forward－－－");
-			req.getSession().setAttribute("username", userName);
-			req.getRequestDispatcher("/LoginSuccess.html").forward(req, resp);
-			return;
+		if (user != null) {
+			JSONObject jsonObject = new JSONObject();
+			try {
+				jsonObject.put("isSuccess", true);
+				jsonObject.put("userType", userType);
+				jsonObject.put("userName", userName);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			req.getSession().setAttribute("user", user);
+			System.out.println(jsonObject.toString());
+			writer.write(jsonObject.toString());
 		} else {
-			resp.sendRedirect("login.html");
+			writer.write("{ \"success\": false }");
 		}
+		writer.flush();
+		writer.close();
 	}
 
 	@Override
@@ -55,7 +70,7 @@ public class LoginValidateServlet extends HttpServlet {
 	}
 
 	// check login
-	public boolean checkLogin(int userType, String userName, String passWord) {
+	public User getUserFromDB(int userType, String userName, String passWord) {
 
 		// mybatis配置文件
 		String resource = "SqlMapConfig.xml";
@@ -76,16 +91,25 @@ public class LoginValidateServlet extends HttpServlet {
 		try {
 			switch (userType) {
 			case User.TYPE_ADMIN:
+				UserAdmin userAdmin = new UserAdmin();
+				userAdmin.setUsername(userName);
+				userAdmin.setPassword(passWord);
 				user = new UserAdminDaoImpl(sqlSessionFactory)
-						.findUserByNameWithExact(userName);
+						.findUserWithNameAndPass(userAdmin);
 				break;
 			case User.TYPE_ENTERPRISE:
+				UserEnterprise userEnterprise = new UserEnterprise();
+				userEnterprise.setUsername(userName);
+				userEnterprise.setPassword(passWord);
 				user = new UserEnterpriseDaoImpl(sqlSessionFactory)
-						.findUserByNameWithExact(userName);
+						.findUserWithNameAndPass(userEnterprise);
 				break;
 			case User.TYPE_PERSON:
+				UserPerson userPerson = new UserPerson();
+				userPerson.setUsername(userName);
+				userPerson.setPassword(passWord);
 				user = new UserPersonDaoImpl(sqlSessionFactory)
-						.findUserByNameWithExact(userName);
+						.findUserWithNameAndPass(userPerson);
 				break;
 
 			}
@@ -94,19 +118,7 @@ public class LoginValidateServlet extends HttpServlet {
 		} finally {
 
 		}
-
-		// Check
-		if (user != null) {
-			String passwordInDB = user.getPassword();
-			if (passWord.equals(passwordInDB)) {
-				return true;
-			} else {
-				return false;
-			}
-		} else {
-			return false;
-		}
-
+		return user;
 	}
 
 }

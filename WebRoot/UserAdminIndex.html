@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>adminIndex.html</title>
+
+<meta name="keywords" content="keyword1,keyword2,keyword3">
+<meta name="description" content="this is my page">
+<meta name="content-type" content="text/html; charset=utf-8">
+
+<!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+
+</head>
+
+<body>
+	Hello!
+	</br>
+	<h1 id=user_name>
+		<h2>
+</body>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			data : {},
+			dataType : "json",
+			error : function(data) {
+
+			},
+			success : function(data) {
+				$("#user_name").text(data.userName);
+			},
+			type : "post",
+			url : "GetSessionServlet"
+		});
+	});
+</script>
+</html>

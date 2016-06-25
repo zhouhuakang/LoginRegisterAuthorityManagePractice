@@ -4,6 +4,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import com.hank.pojo.User;
+import com.hank.pojo.UserEnterprise;
 
 public class UserEnterpriseDaoImpl implements UserAdminDao {
 	// 需要向dao实现类中注入SqlSessionFactory
@@ -15,11 +16,11 @@ public class UserEnterpriseDaoImpl implements UserAdminDao {
 	}
 
 	@Override
-	public User findUserByNameWithExact(String name) throws Exception {
+	public User findUserWithNameAndPass(User userToFind) throws Exception {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		User user = sqlSession.selectOne(
-				"account_admin_user_enterprise.findUserByNameWithExact", name);
+				"account_admin_user_enterprise.findUserWithNameAndPass", userToFind);
 		// 释放资源
 		sqlSession.close();
 
