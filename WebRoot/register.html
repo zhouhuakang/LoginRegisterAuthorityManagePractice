@@ -8,36 +8,65 @@
 <meta name="content-type" content="text/html; charset=utf-8">
 
 <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
-
+<link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
 .content {
 	text-align: center;
 	margin-top: 40px;
 }
+
+#register_section {
+	width: 450px;
+	margin: 150px auto;
+	padding: 30px 40px;
+}
+
+.form-control {
+	background: black;
+	margin-top: 5px;
+	border: none;
+	color: #fff;
+}
+
+.brand {
+	font-size: 28px;
+}
 </style>
 </head>
 
 <body class="content">
-	<form id="register_form" method="POST" >
-		<div>
-			<select name="userType" class="userType" id="userType">
-				<!-- <option value="0">管理员</option> -->
-				<option value="1">企业开发者</option>
-				<option value="2">个人开发者</option>
-			</select>
+	<div id="register_section">
+		<div id="login_header">
+			<div class="brand">
+				<span class="logo"></span> 浙江工业大学云通平台
+			</div>
 		</div>
-		<div>
-			用户名: <input type="text" name="username" id="username" value="test"/>
-		</div>
-		<div>
-			密码: <input type="text" name="password" id="userpassword" value="test"/>
-		</div>
-		<div>
-			确认密码: <input type="text" name="userpassword_confirm" value="test"/>
-		</div>
-		<input type="submit" value="提交"  onclick="regitser()" />
+		<form id="register_form" method="POST">
+			<div>
+				<select class="form-control" name="userType" class="userType"
+					id="userType">
+					<!-- <option value="0">管理员</option> -->
+					<option value="1">企业开发者</option>
+					<option value="2">个人开发者</option>
+				</select>
+			</div>
+			<div>
+				<input class="form-control" type="text" name="username"
+					id="username" placeholder="请输入用户名" />
+			</div>
+			<div>
+				<input class="form-control" type="text" name="password"
+					id="userpassword" placeholder="请输入密码" />
+			</div>
+			<div>
+				<input class="form-control" type="text" name="userpassword_confirm"
+					placeholder="请再输入密码" />
+			</div>
+			<input class="form-control" type="submit" value="提交"
+				onclick="regitser()" />
 
-	</form>
+		</form>
+	</div>
 
 </body>
 <script type="text/javascript" src="register.js"></script>
