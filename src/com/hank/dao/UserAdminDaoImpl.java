@@ -20,11 +20,23 @@ public class UserAdminDaoImpl implements UserAdminDao {
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 
 		UserAdmin user = sqlSession.selectOne(
-				"account_admin_user_admin.findUserWithNameAndPass",userToFind);
+				"account_admin_user_admin.findUserWithNameAndPass", userToFind);
 		// 释放资源
 		sqlSession.close();
 
 		return user;
 	}
 
+	@Override
+	public User insert(User user) throws Exception {
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+
+		sqlSession.insert("account_admin_user_admin.insert_user", user);
+		// 提交事务
+		sqlSession.commit();
+		// 释放资源
+		sqlSession.close();
+		return user;
+
+	}
 }

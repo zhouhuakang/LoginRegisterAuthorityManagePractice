@@ -4,10 +4,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- namespace用来对sql进行分类管理 -->
 <mapper namespace="account_admin_user_person">
-<!-- 根据用户名和密码，查询该用户是否存在及合法 -->
+	<!-- 根据用户名和密码，查询该用户是否存在及合法 -->
 	<select id="findUserWithNameAndPass" parameterType="com.hank.pojo.UserPerson"
 		resultType="com.hank.pojo.UserPerson">
 		select * from user_person where username = #{username} and
 		password =#{password}
 	</select>
+
+
+	<insert id="insert_user" parameterType="com.hank.pojo.UserPerson">
+		<selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+			SELECT
+			LAST_INSERT_ID()
+		</selectKey>
+		insert into user_person(id,username,password)
+		values(#{id},#{username},#{password})
+	</insert>
 </mapper>
