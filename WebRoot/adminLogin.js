@@ -3,7 +3,7 @@ function loginCheck() {
 	var userType = $('#userType').val();
 
 	if ($('#username').val() == "" || $('#password').val() == "") {
-		alert("Can not null!!");
+		alert("UserName or Password can not be null!");
 	} else {
 
 		$.ajax({

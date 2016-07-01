@@ -18,19 +18,28 @@
 </head>
 
 <body class="content">
-	<form id="register_form">
+	<form id="register_form" method="POST" >
 		<div>
-			用户名: <input type="text" name="userName" />
+			<select name="userType" class="userType" id="userType">
+				<!-- <option value="0">管理员</option> -->
+				<option value="1">企业开发者</option>
+				<option value="2">个人开发者</option>
+			</select>
 		</div>
 		<div>
-			密码: <input type="text" name="password" />
+			用户名: <input type="text" name="username" id="username" value="test"/>
 		</div>
 		<div>
-			确认密码: <input type="text" name="password_confirm" />
+			密码: <input type="text" name="password" id="password" value="test"/>
 		</div>
-
+		<div>
+			确认密码: <input type="text" name="password_confirm" value="test"/>
+		</div>
+		<input type="submit" value="提交"  onclick="regitser()" />
 
 	</form>
 
 </body>
+<script type="text/javascript" src="register.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
 </html>

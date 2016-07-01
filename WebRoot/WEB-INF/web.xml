@@ -1,30 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
-	version="2.5">
-	<filter>
-		<filter-name>ExceptionHandlerFilter</filter-name>
-		<filter-class>com.hank.filter.ExceptionHandlerFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>ExceptionHandlerFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	<filter>
-		<filter-name>privilegeFilter</filter-name>
-		<filter-class>com.hank.filter.PrivilegeFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>privilegeFilter</filter-name>
-		<url-pattern>/UserAdminIndex.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>privilegeFilter</filter-name>
-		<url-pattern>/UserEnterpriseIndex.html</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-		<filter-name>privilegeFilter</filter-name>
-		<url-pattern>/UserPersonIndex.html</url-pattern>
-	</filter-mapping>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
+  <filter>
+    <filter-name>ExceptionHandlerFilter</filter-name>
+    <filter-class>com.hank.filter.ExceptionHandlerFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>ExceptionHandlerFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>privilegeFilter</filter-name>
+    <filter-class>com.hank.filter.PrivilegeFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>privilegeFilter</filter-name>
+    <url-pattern>/UserAdminIndex.html</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>privilegeFilter</filter-name>
+    <url-pattern>/UserEnterpriseIndex.html</url-pattern>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>privilegeFilter</filter-name>
+    <url-pattern>/UserPersonIndex.html</url-pattern>
+  </filter-mapping>
 </web-app>
