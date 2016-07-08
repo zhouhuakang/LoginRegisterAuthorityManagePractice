@@ -14,6 +14,7 @@ function loginCheck() {
 			},
 			dataType : "json",
 			success : function(data) {
+				// if (data.ifSuccessful == "true") {
 				switch (data.userType) {
 				case 0:
 					window.location.href = 'UserAdminIndex.html';
@@ -25,11 +26,17 @@ function loginCheck() {
 					window.location.href = 'UserPersonIndex.html';
 					break;
 				}
+				// }
+				// if (data.ifSuccessful == "false") {
+				// alert("用户名或密码错误！");
+				// }
 
 			},
 			type : "post",
 			url : "login_validate",
-			error : function(data) {
+			error : function(XMLHttpRequest, textStatus, errorThrown) {
+				alert(XMLHttpRequest.readyState + XMLHttpRequest.status
+						+ XMLHttpRequest.responseText);
 
 			}
 		});

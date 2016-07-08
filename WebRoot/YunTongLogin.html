@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--[if lt IE 7 ]> <html lang="en" class="ie6 ielt8"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="ie7 ielt8"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="ie8"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>登录</title>
+
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/YunTongLogin.css" />
+</head>
+<body>
+	<div class="container">
+		<section id="content">
+
+			<form method="POST" class="row" autocomplete="off">
+				<h1>浙江工业大学云通平台</h1>
+				<div>
+					<select class="form-control" name="userType" id="userType">
+						<option value="0">管理员</option>
+						<option value="1">企业开发者</option>
+						<option value="2">个人开发者</option>
+					</select>
+				</div>
+				<div>
+					<input type="text" placeholder="请输入用户名" required="" name="username"
+						id="username" " />
+				</div>
+				<div>
+					<input type="password" placeholder="请输入密码" required=""
+						name="password" id="password" />
+				</div>
+				<div>
+					<input id="loginbutton" type="button" value="登录" onclick="loginCheck()" /> <a
+						href="#">忘记密码?</a> <a href="#">注册</a>
+				</div>
+			</form>
+			<!-- form -->
+
+			<!-- button -->
+		</section>
+		<!-- content -->
+	</div>
+	<!-- container -->
+</body>
+<script src="adminLogin.js"></script>
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</html>

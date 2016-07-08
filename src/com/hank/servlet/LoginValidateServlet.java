@@ -47,20 +47,26 @@ public class LoginValidateServlet extends HttpServlet {
 		if (user != null) {
 			JSONObject jsonObject = new JSONObject();
 			try {
-				jsonObject.put("isSuccess", true);
+				jsonObject.put("num", 3);
 				jsonObject.put("userType", userType);
 				jsonObject.put("userName", userName);
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
 			req.getSession().setAttribute("user", user);
+			try{
+			writer.write(jsonObject.toString());}
+			catch(Exception e){
+				e.printStackTrace();
+			}
 			System.out.println(jsonObject.toString());
-			writer.write(jsonObject.toString());
 		} else {
-			writer.write("{ \"success\": false }");
+			System.out.println("{num:1}");
+			writer.write("{ \"num\": 1 }");
 		}
 		writer.flush();
 		writer.close();
+		
 	}
 
 	@Override

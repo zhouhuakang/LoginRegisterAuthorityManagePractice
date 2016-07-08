@@ -10,10 +10,10 @@ function regitser() {
 		},
 		dataType : "json",
 		error : function(data) {
-//			alert(data);
+			alert("Welcome  " + userName);
 		},
 		success : function(data) {
-//			alert("success");
+			alert("Welcome  " + userName);
 		},
 		type : "post",
 		url : "regitser"
