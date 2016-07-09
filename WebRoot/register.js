@@ -1,4 +1,4 @@
-function regitser() {
+function register() {
 	var userType = $('#userType').val();
 	var userName = $('#username').val();
 	var userPassword = $('#userpassword').val();
@@ -10,13 +10,13 @@ function regitser() {
 		},
 		dataType : "json",
 		error : function(data) {
-			alert("Welcome  " + userName);
+			alert("error " + userName);
 		},
 		success : function(data) {
 			alert("Welcome  " + userName);
 		},
 		type : "post",
-		url : "regitser"
+		url : "register"
 	});
 
 }

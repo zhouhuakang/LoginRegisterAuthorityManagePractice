@@ -220,7 +220,7 @@ a:hover {
 	position: relative
 }
 
-#content form input[type="text"], #content form input[type="password"] {
+#username, #userpassword, #userpassword_confirm {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	-ms-border-radius: 3px;
@@ -236,18 +236,20 @@ a:hover {
 	-ms-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
-	background: #eae7e7
-		url("../img/login_input_icon.png") no-repeat !important;
+	background: #eae7e7 ;
 	border: 1px solid #c8c8c8;
 	color: #777;
 	font: 13px Helvetica, Arial, sans-serif;
 	margin: 5px 5px 0px 0px;
-	padding: 15px 10px 15px 40px;
+	padding: 15px 10px 15px 15px;
 	width: 100%;
 }
 
-#content form input[type="text"]:focus, #content form input[type="password"]:focus
-	{
+#userpassword_confirm {
+	background: #eae7e7;
+}
+
+#username:focus, userpassword:focus, userpassword_confirm:focus {
 	-webkit-box-shadow: 0 0 2px #ed1c24 inset;
 	-moz-box-shadow: 0 0 2px #ed1c24 inset;
 	-ms-box-shadow: 0 0 2px #ed1c24 inset;
@@ -262,7 +264,7 @@ a:hover {
 	background-position: 10px 10px !important
 }
 
-#password {
+#userpassword {
 	background-position: 10px -53px !important
 }
 
@@ -296,10 +298,11 @@ a:hover {
 	float: left;
 	font: bold 15px Helvetica, Arial, sans-serif;
 	height: 35px;
-	margin: 20px 0 35px 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
 	position: relative;
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-	width: 120px;
+	width: 100%;
 }
 
 #loginbutton:hover {
@@ -355,8 +358,7 @@ a:hover {
 }
 
 .button a {
-	background: url("../img/8bcLQqF.png") 0
-		-112px no-repeat;
+	background: url("../img/8bcLQqF.png") 0 -112px no-repeat;
 	color: #7E7E7E;
 	font-size: 17px;
 	padding: 2px 0 2px 40px;

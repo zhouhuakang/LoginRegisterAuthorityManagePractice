@@ -7,10 +7,10 @@
 <!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>云通登录</title>
+<title>云通注册</title>
 
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/YunTongLogin.css" />
+<link rel="stylesheet" type="text/css" href="css/YunTongRegister.css" />
 </head>
 <body>
 	<div class="container">
@@ -20,7 +20,7 @@
 				<h1>浙江工业大学云通平台</h1>
 				<div>
 					<select class="form-control" name="userType" id="userType">
-						<option value="0">管理员</option>
+						<!-- <option value="0">管理员</option> -->
 						<option value="1">企业开发者</option>
 						<option value="2">个人开发者</option>
 					</select>
@@ -31,11 +31,16 @@
 				</div>
 				<div>
 					<input type="password" placeholder="请输入密码" required=""
-						name="password" id="password" />
+						name="password" id="userpassword" />
 				</div>
 				<div>
-					<input id="loginbutton" type="button" value="登录" onclick="loginCheck()" /> <a
-						href="#">忘记密码?</a> <a href="#">注册</a>
+					<input type="password" placeholder="请再输入密码"
+						name="userpassword_confirm" id="userpassword_confirm"/>
+				</div>
+				<div>
+					<input id="loginbutton" type="button" value="注    册"
+						onclick="register()" />
+					<!--  <a href="#">忘记密码?</a> <a href="#">注册</a> -->
 				</div>
 			</form>
 			<!-- form -->
@@ -46,7 +51,7 @@
 	</div>
 	<!-- container -->
 </body>
-<script src="adminLogin.js"></script>
+<script type="text/javascript" src="register.js"></script>
 <script src="js/jquery-1.9.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </html>

@@ -2,6 +2,7 @@ package com.hank.servlet;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.hank.dao.UserEnterpriseDao;
 import com.hank.dao.UserEnterpriseDaoImpl;
@@ -23,7 +26,7 @@ import com.hank.pojo.UserAdmin;
 /**
  * Servlet implementation class RegisterServlet
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = { "/regitser" })
+@WebServlet(name = "RegisterServlet", urlPatterns = { "/register" })
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -50,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
+			System.out.println("post success");
 		try {
 			request.setCharacterEncoding("utf-8");
 			response.setContentType("application/json");
@@ -96,6 +100,16 @@ public class RegisterServlet extends HttpServlet {
 				System.out.println(user.getId());
 			}
 
+			JSONObject jsonObject = new JSONObject();
+			try {
+				jsonObject.put("isSuccess", true);
+				jsonObject.put("userType", userType);
+				jsonObject.put("userName", userName);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			Writer writer = response.getWriter();
+			writer.write(jsonObject.toString());
 			// 提交事务
 		} catch (Exception e) {
 			e.printStackTrace();
