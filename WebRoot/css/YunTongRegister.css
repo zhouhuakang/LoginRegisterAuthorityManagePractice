@@ -236,7 +236,7 @@ a:hover {
 	-ms-transition: all 0.5s ease;
 	-o-transition: all 0.5s ease;
 	transition: all 0.5s ease;
-	background: #eae7e7 ;
+	background: #eae7e7;
 	border: 1px solid #c8c8c8;
 	color: #777;
 	font: 13px Helvetica, Arial, sans-serif;
@@ -373,4 +373,11 @@ a:hover {
 .button a:hover {
 	background-position: 0 -135px;
 	color: #00aeef;
+}
+
+#warn h3 {
+	display: none;
+	color: red;
+	margin-bottom: 4px;
+	font: bold 17px Helvetica, Arial, sans-serif;
 }
