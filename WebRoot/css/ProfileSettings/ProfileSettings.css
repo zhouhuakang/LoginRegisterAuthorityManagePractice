@@ -1,0 +1,23 @@
+@CHARSET "US-ASCII";
+
+#logo {
+	margin-top: 4px;
+}
+
+.page-sidebar {
+	background-color: #990033 !important;
+}
+
+.page-sidebar>ul>li>a.active {
+	background: #ff3366;
+}
+
+.profile-info {
+	background-color: #ff3366;
+	background-image: #ff3366;
+}
+
+.page-sidebar {
+	background-image: linear-gradient(to right, #990033 25%, #061117 100%)
+		!important;
+}

@@ -1,0 +1,8 @@
+@CHARSET "US-ASCII";
+#logo{
+	margin-top: 4px;
+}
+.profile.account .head {
+	background-color: #990033;
+	background-image: linear-gradient(to right,#990033 25%,#061117 100%);
+}
